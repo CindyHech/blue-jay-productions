@@ -9,18 +9,20 @@ const Landing = () => {
     <div>
       <div className="header__container">
         <div className="header__description">
-          <h1>America's most awarded movie subscription platform</h1>
+          <h1>America's most awarded media subscription platform</h1>
           <h2>
-            Find your perfect movie with{" "}
+            Find your perfect movie or show with{" "}
             <span className="bluejay">Blue Jay</span>
           </h2>
           <div className="input__wrapper">
-            <button className="btn reroute-btn">
-              <FontAwesomeIcon
-                className="fa-solid fa-magnifying-glass"
-                icon={faMagnifyingGlass}
-              />
-            </button>
+            <Link to="/movies" >
+              <button className="btn reroute-btn">
+                <FontAwesomeIcon
+                  className="fa-solid fa-magnifying-glass"
+                  icon={faMagnifyingGlass}
+                />
+              </button>
+            </Link>
           </div>
           <figure className="header__img--wrapper">
             <Link>

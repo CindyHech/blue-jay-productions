@@ -30,12 +30,12 @@ const Nav = () => {
           </li>
           <li>
             <Link to="/movies" className="movie__nav--link nav__link">
-              Find your movie
+              Search Media Library
             </Link>
           </li>
           <li>
             <Link className="no-cursor nav__link nav__link--primary">
-              Contact
+              Sign In
             </Link>
           </li>
         </ul>
@@ -62,7 +62,7 @@ const Nav = () => {
             </li>
             <li className="menu__list">
               <a href="#features" className="menu__link" onClick={closeMenu}>
-                Find your movie
+                Search Media Library
               </a>
             </li>
             <li className="menu__list">
