@@ -356,6 +356,10 @@ header {
 
 /* MOVIES */
 
+.movie__nav--link{
+  color: white;
+}
+
 .movies {
   display: flex;
   flex-wrap: wrap;

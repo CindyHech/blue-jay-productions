@@ -22,14 +22,14 @@ const Nav = () => {
         <Link>
           <img className="logo" src={logo} alt="Logo" />
         </Link>
-        <ul className="movie__nav--links  nav__links">
+        <ul className="nav__links">
           <li>
-            <Link to="/" className="movie__nav--link nav__link">
+            <Link to="/" className="nav__link">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/movies" className="movie__nav--link nav__link">
+            <Link to="/movies" className="nav__link">
               Search Media Library
             </Link>
           </li>
@@ -61,9 +61,9 @@ const Nav = () => {
               </a>
             </li>
             <li className="menu__list">
-              <a href="#features" className="menu__link" onClick={closeMenu}>
-                Search Media Library
-              </a>
+              <Link to="/movies" className="menu__link" onClick={closeMenu}>
+               Search Media Library
+              </Link>
             </li>
             <li className="menu__list">
               <a className="menu__link no-cursor" onClick={closeMenu}>
