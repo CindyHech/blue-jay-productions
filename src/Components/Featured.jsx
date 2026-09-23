@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Movies from "../Pages/Movies";
+import { Link } from "react-router-dom";
 
 const Featured = () => {
   const [movies, setMovies] = useState([]);
@@ -34,15 +35,20 @@ const Featured = () => {
               {movies.map((movie) => (
                 <div key={movie.imdbID} className="movie">
                   <figure className="movie__img--wrapper">
+                    <Link to="/movieinfo" >
                     <img
                       className="movie__img"
                       src={movie.Poster}
                       alt={movie.Title}
                     />
+                    </Link>
                   </figure>
                   <h2 className="movie__title">{movie.Title}</h2>
                   <h4 className="movie__year">{movie.Year}</h4>
+                  <Link to="/movieinfo">
                   <button className="movie__button">Learn More</button>
+                  </Link>
+                  
                 </div>
               ))}
             </div>

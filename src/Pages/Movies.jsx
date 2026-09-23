@@ -138,15 +138,19 @@ const Movies = ({ movie }) => {
         {movies.slice(0, 8).map((movie) => (
           <div key={movie.imdbID} className="movie">
             <figure className="movie__img--wrapper">
-              <img
-                className="movie__img"
+              <Link to={`/movieinfo/${movie.id}`} className="movie__img">
+               <img
                 src={movie.Poster}
                 alt={movie.Title}
               />
+              </Link>
             </figure>
-            <h2 className="movie__title">{movie.Title}</h2>
+             <h2 className="movie__title">{movie.Title}</h2>
             <h4 className="movie__year">{movie.Year}</h4>
+            <Link to={`/movieinfo/${movie.id}`}>
             <button className="movie__button">Learn More</button>
+            </Link>
+            
           </div>
         ))}
       </div>
