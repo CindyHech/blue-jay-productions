@@ -8,40 +8,55 @@ import img from "../assets/2.png";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 
-const Movies = ({ movie }) => {
+
+const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const movieListEl = useRef(null);
+  const [searchTerm, setSearchTerm] = useState("game");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  async function renderMovies(searchTerm = "game") {
-    const moviesRes = await fetch(
-      `https://www.omdbapi.com/?apikey=61ba8310&s=${searchTerm}`,
-    );
-    const moviesData = await moviesRes.json();
-    console.log(moviesData);
+ async function renderMovies(search = "game") {
+    try {
+      const moviesRes = await fetch(
+        `https://www.omdbapi.com/?apikey=61ba8310&s=${search}`,
+      );
+      const moviesData = await moviesRes.json();
 
-    if (!moviesData.Search) {
-      movieListEl.current.innerHTML = `<p class="no__results">No movies found for "${searchTerm}"</p>`;
-      return;
+      if (!moviesData.Search || moviesData.Search.length === 0) {
+        setMovies([]);
+        setSearchTerm(search);
+        return;
+      }
+
+      setMovies(moviesData.Search.slice(0, 8));
+      setSearchTerm(search);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      setMovies([]);
     }
-
-    setMovies(moviesData.Search);
   }
 
   function searchChange(event) {
     const value = event.target.value.trim();
+
     if (value.length > 2) {
       renderMovies(value);
+    } else if (value.length === 0) {
+      renderMovies();
+    } else {
+      setMovies([]);
+      setSearchTerm(value);
     }
   }
 
-  const [hidden, setHidden] = useState(false);
 
   function openMenu() {
-    document.body.classList += "menu--open";
+    document.body.classList.add("menu--open");
+    setMenuOpen(true);
   }
 
   function closeMenu() {
     document.body.classList.remove("menu--open");
+    setMenuOpen(false);
   }
 
   useEffect(() => {
@@ -77,20 +92,16 @@ const Movies = ({ movie }) => {
           </button>
           <div
             className="menu__backdrop"
-            style= {{ visibility: hidden ? "visible" : "hidden" }}
+            style={{ visibility: menuOpen ? "visible" : "hidden" }}
           >
             <button className="btn__menu btn__menu--close" onClick={closeMenu}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
             <ul className="menu__links">
               <li className="menu__list">
-                <a
-                  href="http://127.0.0.1:5500/index.html"
-                  className="menu__link"
-                  onClick={closeMenu}
-                >
+                <Link to="/" className="menu__link" onClick={closeMenu}>
                   Home
-                </a>
+                </Link>
               </li>
               <li className="menu__list">
                 <Link to="/movies" className="menu__link" onClick={closeMenu}>
@@ -98,9 +109,9 @@ const Movies = ({ movie }) => {
                 </Link>
               </li>
               <li className="menu__list">
-                <a className="menu__link no-cursor" onClick={closeMenu}>
+                <Link className="menu__link no-cursor" onClick={closeMenu}>
                   Sign In
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -134,25 +145,25 @@ const Movies = ({ movie }) => {
         </div>
       </header>
 
-      <div className="movies" ref={movieListEl}>
-        {movies.slice(0, 8).map((movie) => (
-          <div key={movie.imdbID} className="movie">
-            <figure className="movie__img--wrapper">
-              <Link to={`/movieinfo/${movie.id}`} className="movie__img">
-               <img
-                src={movie.Poster}
-                alt={movie.Title}
-              />
+      <div className="movies">
+        {movies.length > 0 ? (
+          movies.slice(0, 8).map((movie) => (
+            <div key={movie.imdbID} className="movie">
+              <figure className="movie__img--wrapper">
+                <Link to={`/movieinfo/${movie.imdbID}`} className="movie__img">
+                  <img src={movie.Poster} alt={movie.Title} />
+                </Link>
+              </figure>
+              <h2 className="movie__title">{movie.Title}</h2>
+              <h4 className="movie__year">{movie.Year}</h4>
+              <Link to={`/movieinfo/${movie.imdbID}`}>
+                <button className="movie__button">Learn More</button>
               </Link>
-            </figure>
-             <h2 className="movie__title">{movie.Title}</h2>
-            <h4 className="movie__year">{movie.Year}</h4>
-            <Link to={`/movieinfo/${movie.id}`}>
-            <button className="movie__button">Learn More</button>
-            </Link>
-            
-          </div>
-        ))}
+            </div>
+          ))
+        ) : (
+          <p className="no__results">No movies found for "{searchTerm}"</p>
+        )}
       </div>
       <Footer />
     </>
