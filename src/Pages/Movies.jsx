@@ -77,7 +77,7 @@ const Movies = ({ movie }) => {
           </button>
           <div
             className="menu__backdrop"
-            style={{ visibility: hidden ? "visible" : "hidden" }}
+            style= {{ visibility: hidden ? "visible" : "hidden" }}
           >
             <button className="btn__menu btn__menu--close" onClick={closeMenu}>
               <FontAwesomeIcon icon={faTimes} />

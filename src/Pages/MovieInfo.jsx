@@ -13,19 +13,29 @@ const MovieInfo = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    const fetchMovie = async (id ) => {
-      const response = await fetch(`https://www.omdbapi.com/?apikey=61ba8310&i=tt0944947`);
+  const fetchMovie = async () => {
+    try {
+      const response = await fetch(`https://www.omdbapi.com/?apikey=61ba8310&i=${id}`);
       const data = await response.json();
-      
-      setMovie(data);
-    };
+
+      if (data.Response === 'True') {
+        setMovie(data);
+      } else {
+        console.error(data.Error); // Log the error if the movie is not found
+      }
+    } catch (error) {
+      console.error("Error fetching movie data:", error);
+    }
 
 
-    fetchMovie();
-  }, [id]); 
- 
+  };
+
+  fetchMovie();
+}, [id]);
+
 
   if (!movie) return <div>Loading...</div>;
+  
   return (
     <>
       <Nav />
