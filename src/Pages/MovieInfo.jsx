@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Components/Footer";
 import { Link, useParams  } from "react-router-dom";
+import Featured from "../Components/Featured";
 
 
 
@@ -42,34 +43,33 @@ const MovieInfo = () => {
       <div className="movies__container">
         <div className="movies__row">
           <div className="movies__selected--top">
-            <Link to="/movies" className="movie__link">
+            <Link to="/movies" className="movie__link bluejay">
               <FontAwesomeIcon icon={faArrowLeft} />
             </Link>
-            <Link to="/">
-              <h2 className="movie__selected--title--top">Media</h2>
-            </Link>
+            <h2 className="movie__selected--title--top">Media</h2>
           </div>
 
           <div className="movie__selected">
             <figure className="movie__selected--figure">
-              {movie.Poster && <img src={movie.Poster} alt={movie.Title} />}
+              {movie.Poster && <img className="movie__poster--img" src={movie.Poster} alt={movie.Title} />}
             </figure>
             <div className="movie__selected--description">
-              <h2 className="movie__selected--title">{movie.Title}</h2>
-              <h4 className="movie__year">{movie.Year}</h4>
-              <h4 className="movie__selected--rating">{movie.imdbRating}</h4>
+              <h3 className="movie__selected--title">{movie.Title}</h3>
+              <h4 className="movie__year">Year: <span>{movie.Year}</span></h4>
+              <h4 className="movie__selected--rating">IMBD Rating: <span>{movie.imdbRating}</span></h4>
 
               <div className="movie__summmary">
+                <h4>Genre: <span className="genre">{movie.Genre}</span></h4>
+                <h4>Type: <span>{movie.Type}</span></h4>
+                <h4 className="movie__selected--actors">Actors: <span>{movie.Actors}</span></h4>
                 <h3 className="movie__summary--title">Summary</h3>
-                <h3>{movie.Genre}</h3>
-                <h3>{movie.Type}</h3>
-                <h3 className="movie__selected--actors">{movie.Actors}</h3>
                 <p className="movie__summary--para">{movie.Plot}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Featured/>
       <Footer/>
     </>
   );

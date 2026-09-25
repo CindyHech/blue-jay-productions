@@ -76,7 +76,7 @@ h1 {
 
 h2 {
   font-size: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   text-align: center;
   animation: fade-up 650ms 400ms backwards;
 }
@@ -117,6 +117,11 @@ button:active {
 
 .bluejay {
   color: #099feb;
+  font-weight: bold;
+}
+
+span {
+  font-weight: lighter;
 }
 
 .logo {
@@ -416,9 +421,64 @@ header {
 }
 
 /* Movie */
-.movies__container{
-  
+
+.movie__selected--title--top{
+  color: #099feb;
+  font-size: 28px;
 }
+
+.movie__selected--title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.movie__selected--figure{
+  width: 40%;
+  padding: 0px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie__poster--img{
+  max-height: 500px;
+  width: auto;
+  max-width: 100%;
+}
+
+.movie__selected{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.movie__selected--description{
+  width: 60%;
+  padding: 0px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.genre {
+  font-style: italic;
+  font-size: 15px;
+}
+
+.movie__selected--actors {
+  margin-bottom: 15px;
+}
+
+
+/* Featured */
+
+.section__title {
+  font-size: 25px;
+}
+
 
  
 
@@ -488,6 +548,10 @@ header {
   .movie {
     width: 50%;
   }
+
+  .movie__selected{
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 680px) {
@@ -545,6 +609,10 @@ header {
 
   .movie {
     width: 100%;
+  }
+
+  .movie__selected{
+    flex-direction: column;
   }
 }
 
