@@ -13,6 +13,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("game");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
  async function renderMovies(search = "game") {
     try {
@@ -145,9 +146,18 @@ const Movies = () => {
         </div>
       </header>
 
-      <div className="movies">
-        {movies.length > 0 ? (
-          movies.slice(0, 8).map((movie) => (
+      {loading
+        ? new Array(10).fill(0).map((movie) => (
+            <div className="movies" key={index}>
+              <div className="movie__img--wrapper--skeleton">
+                <div className="movie__img--skeleton"></div>
+              </div>
+              <h2 className="movie__title--skeleton"></h2>
+              <h4 className="movie__year--skeleton"></h4>
+              <button className="movie__button--skeleton"></button>
+            </div>
+          ))
+        : movies.slice(0, 8).map((movie) => (
             <div key={movie.imdbID} className="movie">
               <figure className="movie__img--wrapper">
                 <Link to={`/movieinfo/${movie.imdbID}`} className="movie__img">
@@ -161,11 +171,9 @@ const Movies = () => {
               </Link>
             </div>
           ))
-        ) : (
-          <p className="no__results">No movies found for "{searchTerm}"</p>
-        )}
-      </div>
-      <Footer />
+      }
+      
+     <Footer />
     </>
   );
 };

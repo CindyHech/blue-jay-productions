@@ -420,11 +420,45 @@ header {
   text-align: center;
 }
 
+/* Skeleton-Movies */
+.movie__img--wrapper--skeleton {
+  background-color: lightgrey;
+}
+
+.movie__img--skeleton {
+  color: lightgrey;
+  mask-image: url();
+}
+
+.movie__title--skeleton {
+  background-color: lightgrey;
+}
+.movie__year--skeleton {
+  background-color: lightgrey;
+}
+
+.movie__button--skeleton {
+  background-color: lightgrey;
+}
+
+
 /* Movie */
 
 .movie__selected--title--top{
   color: #099feb;
   font-size: 28px;
+}
+
+
+
+.movies__selected--top {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+
 }
 
 .movie__selected--title {
@@ -438,6 +472,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.movie__link-back--btn {
+ margin-top: 20px;
+ text-decoration: none;
+ font-size: 20px;
+ margin-left: 24px;
 }
 
 .movie__poster--img{
