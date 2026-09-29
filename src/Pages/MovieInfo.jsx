@@ -81,6 +81,10 @@ const MovieInfo = () => {
                 <h3 className="movie__summary--title">Summary</h3>
                 <p className="movie__summary--para">{movie.Plot}</p>
               </div>
+              <div className="movie__watch--btn-wrapper">
+                <button className="movie__watch--btn no-cursor">Watch Now</button>
+              </div>
+  
             </div>
           </div>
         </div>

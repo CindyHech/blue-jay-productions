@@ -163,6 +163,7 @@ span {
   border-radius: 50px;
   background-color: #099feb;
   color: white;
+  margin-left: 26px;
 }
 
 .nav__link--primary:hover {
@@ -409,6 +410,7 @@ header {
 
 .movie__year {
   text-align: center;
+  margin-bottom: 8px;
 }
 
 .movie__button {
@@ -445,6 +447,12 @@ header {
 
 /* Movie */
 
+.movies__row{
+  background-color: #b4b4b4;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
 .movie__selected--title--top{
   color: #099feb;
   font-size: 28px;
@@ -469,7 +477,7 @@ header {
 
 .movie__selected--figure{
   width: 40%;
-  padding: 0px 32px;
+  padding: 0px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -513,6 +521,31 @@ header {
 .movie__selected--actors {
   margin-bottom: 15px;
 }
+
+.movie__summary--para{
+  margin-bottom: 24px;
+}
+
+.movie__watch--btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.movie__watch--btn{
+  background-color: #099feb;
+  font-size: 16px;
+  padding: 0 10px;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+}
+
+
+
 
 
 /* Featured */
@@ -593,6 +626,15 @@ header {
 
   .movie__selected{
     flex-direction: column;
+    align-items: center;
+  }
+
+  .movie__selected--figure{
+    margin-bottom: 10px
+  }
+
+  .movie__watch--btn{
+
   }
 }
 

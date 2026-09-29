@@ -159,8 +159,8 @@ const Movies = () => {
             </div>
           ))
 
-          <div className="movies">
-         : {movies.slice(0, 8).map((movie) => (
+         : (<div className="movies">
+          {movies.slice(0, 8).map((movie) => (
               <div key={movie.imdbID} className="movie">
                 <figure className="movie__img--wrapper">
                   <Link
@@ -177,7 +177,7 @@ const Movies = () => {
                 </Link>
               </div>
           ))}
-          </div>
+          </div>)
       }
       <Footer />
     </>
