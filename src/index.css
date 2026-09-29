@@ -430,7 +430,6 @@ header {
 
 .movie__img--skeleton {
   color: lightgrey;
-  mask-image: url();
 }
 
 .movie__title--skeleton {
