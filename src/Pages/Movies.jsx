@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/Blue Jay Bird Logo Transparent(150 x 40 px) (150 x 40 px) (5).png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +24,7 @@ const Movies = () => {
 
       if (!moviesData.Search || moviesData.Search.length === 0) {
         setMovies([]);
-        setSearchTerm(search);
+        setSearchTerm(searchTerm);
         return;
       }
 

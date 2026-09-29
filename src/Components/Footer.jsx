@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer__container">
           <div className="footer__row">
             <Link to="/">
-              <img className="logo" src={logo} src={logo} alt="Logo" />
+              <img className="logo" src={logo} alt="Logo" />
             </Link>
             <div className="footer__list">
               <Link className="no-cursor footer__link">Account</Link>

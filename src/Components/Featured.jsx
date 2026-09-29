@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Movies from "../Pages/Movies";
 import { Link } from "react-router-dom";
 
 const Featured = () => {

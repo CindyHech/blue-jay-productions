@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -66,9 +66,9 @@ const Nav = () => {
               </Link>
             </li>
             <li className="menu__list">
-              <a className="menu__link no-cursor" onClick={closeMenu}>
-                Contact
-              </a>
+              <Link className="menu__link no-cursor" onClick={closeMenu}>
+               Sign In
+              </Link>
             </li>
           </ul>
         </div>
