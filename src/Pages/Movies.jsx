@@ -15,6 +15,7 @@ const Movies = () => {
   const [loading, setLoading] = useState(true);
 
   async function renderMovies(search = "game") {
+    setLoading(true);
     try {
       const moviesRes = await fetch(
         `https://www.omdbapi.com/?apikey=61ba8310&s=${search}`,
@@ -157,27 +158,27 @@ const Movies = () => {
               <button className="movie__button--skeleton"></button>
             </div>
           ))
-        : movies.slice(0, 8).map((movie) => (
-            
-              <div className="movies">
+
+          <div className="movies">
+         : {movies.slice(0, 8).map((movie) => (
               <div key={movie.imdbID} className="movie">
-              <figure className="movie__img--wrapper">
-                <Link to={`/movieinfo/${movie.imdbID}`} className="movie__img">
-                  <img src={movie.Poster} alt={movie.Title} />
+                <figure className="movie__img--wrapper">
+                  <Link
+                    to={`/movieinfo/${movie.imdbID}`}
+                    className="movie__img"
+                  >
+                    <img src={movie.Poster} alt={movie.Title} />
+                  </Link>
+                </figure>
+                <h2 className="movie__title">{movie.Title}</h2>
+                <h4 className="movie__year">{movie.Year}</h4>
+                <Link to={`/movieinfo/${movie.imdbID}`}>
+                  <button className="movie__button">Learn More</button>
                 </Link>
-              </figure>
-              <h2 className="movie__title">{movie.Title}</h2>
-              <h4 className="movie__year">{movie.Year}</h4>
-              <Link to={`/movieinfo/${movie.imdbID}`}>
-                <button className="movie__button">Learn More</button>
-              </Link>
-             </div>
-            </div>
-            
-
-            
-          ))} 
-
+              </div>
+          ))}
+          </div>
+      }
       <Footer />
     </>
   );
