@@ -8,14 +8,13 @@ import img from "../assets/2.png";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 
-
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("game");
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
- async function renderMovies(search = "game") {
+  async function renderMovies(search = "game") {
     try {
       const moviesRes = await fetch(
         `https://www.omdbapi.com/?apikey=61ba8310&s=${search}`,
@@ -33,6 +32,8 @@ const Movies = () => {
     } catch (error) {
       console.error("Error fetching movies:", error);
       setMovies([]);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -48,7 +49,6 @@ const Movies = () => {
       setSearchTerm(value);
     }
   }
-
 
   function openMenu() {
     document.body.classList.add("menu--open");
@@ -147,8 +147,8 @@ const Movies = () => {
       </header>
 
       {loading
-        ? new Array(10).fill(0).map((movie) => (
-            <div className="movies" key={index}>
+        ? new Array(8).fill(0).map((_, index) => (
+            <div className="movies__container" key={index}>
               <div className="movie__img--wrapper--skeleton">
                 <div className="movie__img--skeleton"></div>
               </div>
@@ -158,7 +158,9 @@ const Movies = () => {
             </div>
           ))
         : movies.slice(0, 8).map((movie) => (
-            <div key={movie.imdbID} className="movie">
+            
+              <div className="movies">
+              <div key={movie.imdbID} className="movie">
               <figure className="movie__img--wrapper">
                 <Link to={`/movieinfo/${movie.imdbID}`} className="movie__img">
                   <img src={movie.Poster} alt={movie.Title} />
@@ -169,11 +171,14 @@ const Movies = () => {
               <Link to={`/movieinfo/${movie.imdbID}`}>
                 <button className="movie__button">Learn More</button>
               </Link>
+             </div>
             </div>
-          ))
-      }
-      
-     <Footer />
+            
+
+            
+          ))} 
+
+      <Footer />
     </>
   );
 };
