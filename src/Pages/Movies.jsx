@@ -153,8 +153,8 @@ const Movies = () => {
               <div className="movie__img--wrapper--skeleton">
                 <div className="movie__img--skeleton"></div>
               </div>
-              <h2 className="movie__title--skeleton"></h2>
-              <h4 className="movie__year--skeleton"></h4>
+              <div className="movie__title--skeleton"></div>
+              <div className="movie__year--skeleton"></div>
               <button className="movie__button--skeleton"></button>
             </div>
           ))

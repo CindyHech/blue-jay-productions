@@ -9,11 +9,13 @@ const Nav = () => {
   const [hidden, setHidden] = useState(false);
 
   function openMenu() {
-    document.body.classList += "menu--open";
+    document.body.classList.add ("menu--open");
+    setHidden(true);
   }
 
   function closeMenu() {
     document.body.classList.remove("menu--open");
+    setHidden(false);
   }
 
   return (
