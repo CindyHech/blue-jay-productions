@@ -50,6 +50,7 @@ header {
 h1 {
   font-size: 50px;
   color: #099feb;
+  margin-top: 24px;
   margin-bottom: 24px;
   text-align: center;
   animation: animate__h1 800ms 200ms backwards;
@@ -371,6 +372,11 @@ select {
   padding: 0 16px;
   width: 100%;
   max-width: 200px;
+}
+
+.sort__select{
+  margin-top: 60px;
+  margin-left: 48px;
 }
 
 /* MOVIES */
@@ -722,6 +728,11 @@ select {
     display: none;
   }
 
+  h1 {
+    margin-top: 15px;
+    font-size: 24px;
+  }
+
   .header__description {
     max-width: 550px;
     display: flex;
@@ -734,6 +745,7 @@ select {
     flex-direction: column;
     align-items: center;
     height: 150px;
+    margin-bottom: 0;
   }
 
   .input {
@@ -751,6 +763,10 @@ select {
   h1 {
     font-size: 36px;
     text-align: center;
+  }
+
+  .menu__link {
+    font-size: 30px;
   }
 
   .movie__h1 {
@@ -773,4 +789,33 @@ select {
   .movie {
     width: 100%;
   }
+
+  .movie__selected--figure{
+    padding: 0%;
+    margin-bottom: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .movie__selected--description {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .movie__watch--btn-wrapper{
+    margin-top: 10px;
+  }
+
+  
+  .reroute-btn {
+    width: 200px;
+  }
+
+  .header__img--wrapper{
+    padding: 50px 50px 50px 50px;
+  }
+
+  
+
+ 
 }

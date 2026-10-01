@@ -155,19 +155,15 @@ const Movies = () => {
             <img className="img" src={img} alt="img" />
           </Link>
         </div>
-        <div>
+        <div className="sort__select">
           <select
             onChange={(e) => setSortOrder(e.target.value)}
             value={sortOrder}
           >
-            <option value="DEFAULT" disabled>Sort</option>
+            <option value="DEFAULT" disabled>Sort by Release</option>
             <option value="newest">Newest to Oldest</option>
             <option value="oldest">Oldest to Newest</option>
           </select>
-
-          {sortedMovies.map((movies) => (
-            <Movies key={movies.id} movies={moviesData} />
-          ))}
         </div>
       </header>
 
@@ -184,7 +180,7 @@ const Movies = () => {
         ))
       ) : (
         <div className="movies">
-          {movies.slice(0, 8).map((movie) => (
+          {sortedMovies.slice(0, 8).map((movie) => (
             <div key={movie.imdbID} className="movie">
               <figure className="movie__img--wrapper">
                 <Link to={`/movieinfo/${movie.imdbID}`} className="movie__img">
