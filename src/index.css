@@ -360,6 +360,19 @@ header {
   max-width: 200px;
 }
 
+select {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  padding: 0 16px;
+  width: 100%;
+  max-width: 200px;
+}
+
 /* MOVIES */
 
 .movie__nav--link {
@@ -633,7 +646,7 @@ header {
   }
 
   .movie__watch--btn{
-
+    cursor: not-allowed;
   }
 }
 

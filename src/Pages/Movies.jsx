@@ -13,6 +13,7 @@ const Movies = () => {
   const [searchTerm, setSearchTerm] = useState("game");
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("DEFAULT");
 
   async function renderMovies(search = "game") {
     setLoading(true);
@@ -37,6 +38,14 @@ const Movies = () => {
       setLoading(false);
     }
   }
+
+  const sortedMovies = [...movies].sort((a, b) => {
+    if (sortOrder === "newest") {
+      return new Date(b.Year) - new Date(a.Year);
+    } else {
+      return new Date(a.Year) - new Date(b.Year);
+    }
+  });
 
   function searchChange(event) {
     const value = event.target.value.trim();
@@ -146,40 +155,51 @@ const Movies = () => {
             <img className="img" src={img} alt="img" />
           </Link>
         </div>
+        <div>
+          <select
+            onChange={(e) => setSortOrder(e.target.value)}
+            value={sortOrder}
+          >
+            <option value="DEFAULT" disabled>Sort</option>
+            <option value="newest">Newest to Oldest</option>
+            <option value="oldest">Oldest to Newest</option>
+          </select>
+
+          {sortedMovies.map((movies) => (
+            <Movies key={movies.id} movies={moviesData} />
+          ))}
+        </div>
       </header>
 
-      {loading
-        ? new Array(8).fill(0).map((_, index) => (
-            <div className="movies__container" key={index}>
-              <div className="movie__img--wrapper--skeleton">
-                <div className="movie__img--skeleton"></div>
-              </div>
-              <div className="movie__title--skeleton"></div>
-              <div className="movie__year--skeleton"></div>
-              <button className="movie__button--skeleton"></button>
+      {loading ? (
+        new Array(8).fill(0).map((_, index) => (
+          <div className="movies__container" key={index}>
+            <div className="movie__img--wrapper--skeleton">
+              <div className="movie__img--skeleton"></div>
             </div>
-          ))
-
-         : (<div className="movies">
+            <div className="movie__title--skeleton"></div>
+            <div className="movie__year--skeleton"></div>
+            <button className="movie__button--skeleton"></button>
+          </div>
+        ))
+      ) : (
+        <div className="movies">
           {movies.slice(0, 8).map((movie) => (
-              <div key={movie.imdbID} className="movie">
-                <figure className="movie__img--wrapper">
-                  <Link
-                    to={`/movieinfo/${movie.imdbID}`}
-                    className="movie__img"
-                  >
-                    <img src={movie.Poster} alt={movie.Title} />
-                  </Link>
-                </figure>
-                <h2 className="movie__title">{movie.Title}</h2>
-                <h4 className="movie__year">{movie.Year}</h4>
-                <Link to={`/movieinfo/${movie.imdbID}`}>
-                  <button className="movie__button">Learn More</button>
+            <div key={movie.imdbID} className="movie">
+              <figure className="movie__img--wrapper">
+                <Link to={`/movieinfo/${movie.imdbID}`} className="movie__img">
+                  <img src={movie.Poster} alt={movie.Title} />
                 </Link>
-              </div>
+              </figure>
+              <h2 className="movie__title">{movie.Title}</h2>
+              <h4 className="movie__year">{movie.Year}</h4>
+              <Link to={`/movieinfo/${movie.imdbID}`}>
+                <button className="movie__button">Learn More</button>
+              </Link>
+            </div>
           ))}
-          </div>)
-      }
+        </div>
+      )}
       <Footer />
     </>
   );
